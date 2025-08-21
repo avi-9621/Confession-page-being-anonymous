@@ -9,7 +9,8 @@ Lightweight and easy to deploy
 Installation
 
 1. Clone the repository:
-    git clone https://github.com/avi-9621/anonymous-confession-page.git
+    git clone https://github.com/avi-9621/Confession-page-being-anonymous
+.git
 
 2. Navigate into the project directory:
      cd anonymous-confession-page
