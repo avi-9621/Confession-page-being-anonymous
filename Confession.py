@@ -1,7 +1,8 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, flash, get_flashed_messages
 import sqlite3
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # Required for flashing messages
 
 def init_db():
     conn = sqlite3.connect('confessions.db')
@@ -16,7 +17,6 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Initialize the database
 init_db()
 
 @app.route('/', methods=['GET', 'POST'])
@@ -30,12 +30,11 @@ def home():
             c.execute('INSERT INTO confessions (username, message) VALUES (?, ?)', (username, message))
             conn.commit()
             conn.close()
-        # Redirect to GET with query param to show submission message
-        return redirect(url_for('home', submitted='true'))
+            flash('Thank you for submitting your confession!')
+        return redirect(url_for('home'))
 
-    # Check if submission confirmation is needed
-    submitted = request.args.get('submitted') == 'true'
-    return render_template('index.html', submitted=submitted)
+    messages = get_flashed_messages()
+    return render_template('index.html', messages=messages)
 
 if __name__ == '__main__':
     app.run(debug=True)
