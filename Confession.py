@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, redirect, url_for, flash, get
 import sqlite3
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # Required for flashing messages
+app.secret_key = 'your_secret_key_here'  # <-- Replace with a secure key in production
 
 def init_db():
     conn = sqlite3.connect('confessions.db')
