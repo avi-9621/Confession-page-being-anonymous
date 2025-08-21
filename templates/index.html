@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Anonymous Confession Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -69,7 +69,8 @@
       flex-direction: column;
     }
 
-    input, textarea {
+    input,
+    textarea {
       width: 100%;
       padding: 0.85rem 1rem;
       margin-bottom: 1.2rem;
@@ -80,7 +81,8 @@
       background-color: #fefefe;
     }
 
-    input:focus, textarea:focus {
+    input:focus,
+    textarea:focus {
       border-color: #6c63ff;
       outline: none;
       box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
@@ -113,24 +115,22 @@
   </style>
 </head>
 <body>
-
   <div class="card">
     <h1>💬 Share Your Confession</h1>
 
     {% if messages %}
-      <div class="alert">
-        {% for msg in messages %}
-          {{ msg }}
-        {% endfor %}
-      </div>
+    <div class="alert">
+      {% for msg in messages %}
+        {{ msg }}
+      {% endfor %}
+    </div>
     {% endif %}
 
     <form method="POST" action="/">
-      <input type="text" name="username" placeholder="Your name (or Anonymous)">
+      <input type="text" name="username" placeholder="Your name (or Anonymous)" />
       <textarea name="message" rows="4" placeholder="Write your confession..." required></textarea>
       <button type="submit">Submit Confession</button>
     </form>
   </div>
-
 </body>
 </html>
